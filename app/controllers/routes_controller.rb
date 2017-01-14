@@ -1,5 +1,8 @@
 class RoutesController < ApplicationController
 
+  def index
+  end
+
   def safe_path
 
     api_key = 'AIzaSyAYU_fYcPQGp1FnLfH4W0F07hofMQkvZcQ'
@@ -34,7 +37,8 @@ class RoutesController < ApplicationController
     selected_routes.each do |selected_route|
       selected_route['legs'].each do |leg|
         leg['steps'].each do |step|
-          lat_long_list << [{lat: step['start_location']['lat'], lng: step['start_location']['lng']}, {lat: step['end_location']['lat'], lng: step['end_location']['lng']} ]
+          lat_long_list << {lat: step['start_location']['lat'].to_f, lng: step['start_location']['lng'].to_f}
+          lat_long_list << {lat: step['end_location']['lat'].to_f, lng: step['end_location']['lng'].to_f}
         end
       end
     end

@@ -1,0 +1,35 @@
+<div id="map" style="width:800px; height:800px"></div>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAoxCtn64wOaq5cGB5qcgGZnP_YhSKosJQ"></script>
+<script>
+    var map;
+    var directionsService = new google.maps.DirectionsService();
+    var directionsDisplay = new google.maps.DirectionsRenderer({
+        polylineOptions: {
+            strokeColor: "black"
+        }
+    });
+    function initialize() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 11,
+            center: {lat: 13.0011774, lng: 80.2564957}
+        });
+        directionsDisplay.setMap(map);
+        var points = [];
+        $.get('/routes/safe_path', function (data) {
+            console.log(data);
+
+            var path = new google.maps.Polyline({
+                path: data,
+                geodesic: true,
+                strokeColor: '#FF0000',
+                strokeOpacity: 1.0,
+                strokeWeight: 2
+            });
+
+            path.setMap(map);
+            console.log(path);
+        });
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
