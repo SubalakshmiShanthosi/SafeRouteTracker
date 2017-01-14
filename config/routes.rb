@@ -5,6 +5,7 @@ SafeRouteTracker::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'routes#index'
+  get 'all_locations' => 'routes#locations  '
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
