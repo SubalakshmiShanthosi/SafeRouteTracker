@@ -1,0 +1,156 @@
+     [
+        {
+            "id": 0,
+            "occurences": 0,
+            "latitude": "13.1090452",
+            "name": "villivakkam",
+            "longitude": "80.2049407"
+        },
+        {
+            "id": 1,
+            "occurences": 6,
+            "latitude": "13.1044367",
+            "name": "govt stanely hospital",
+            "longitude": "80.2834752"
+        },
+        {
+            "id": 2,
+            "occurences": 1,
+            "latitude": "13.089657",
+            "name": "choolai",
+            "longitude": "80.26799799999999"
+        },
+        {
+            "id": 3,
+            "occurences": 0,
+            "latitude": "13.0826802",
+            "name": "chinnaiah mudali colony",
+            "longitude": "80.2707184"
+        },
+        {
+            "id": 4,
+            "occurences": 0,
+            "latitude": "13.0853311",
+            "name": "vepery",
+            "longitude": "80.2607068"
+        },
+        {
+            "id": 5,
+            "occurences": 0,
+            "latitude": "12.9229153",
+            "name": "tambaram sanitorium",
+            "longitude": "80.12745579999999"
+        },
+        {
+            "id": 6,
+            "occurences": 0,
+            "latitude": "13.1204001",
+            "name": "kolathur",
+            "longitude": "80.21429359999999"
+        },
+        {
+            "id": 7,
+            "occurences": 1,
+            "latitude": "12.9171427",
+            "name": "medavakkam",
+            "longitude": "80.1923489"
+        },
+        {
+            "id": 8,
+            "occurences": 0,
+            "latitude": "13.0472609",
+            "name": "poonamallee",
+            "longitude": "80.09453069999999"
+        },
+        {
+            "id": 9,
+            "occurences": 0,
+            "latitude": "13.0530785",
+            "name": "virugambakkam ",
+            "longitude": "80.193101"
+        },
+        {
+            "id": 10,
+            "occurences": 9,
+            "latitude": "13.0373769",
+            "name": "ashok nagar",
+            "longitude": "80.2122821"
+        },
+        {
+            "id": 11,
+            "occurences": 0,
+            "latitude": "13.040384",
+            "name": "ganesh nagar",
+            "longitude": "80.1644877"
+        },
+        {
+            "id": 12,
+            "occurences": 0,
+            "latitude": "13.0247308",
+            "name": "fore shore estate",
+            "longitude": "80.27742940000002"
+        },
+        {
+            "id": 13,
+            "occurences": 7,
+            "latitude": "13.0407075",
+            "name": "k k nagar",
+            "longitude": "80.1916911"
+        },
+        {
+            "id": 14,
+            "occurences": 1,
+            "latitude": "12.994761",
+            "name": "thomas mount h o",
+            "longitude": "80.1975317"
+        },
+        {
+            "id": 15,
+            "occurences": 6,
+            "latitude": "13.0778142",
+            "name": "egmore",
+            "longitude": "80.25966149999999"
+        },
+        {
+            "id": 16,
+            "occurences": 1,
+            "latitude": "13.1143167",
+            "name": "ambattur ",
+            "longitude": "80.1480551"
+        },
+        {
+            "id": 17,
+            "occurences": 3,
+            "latitude": "13.0961362",
+            "name": "angappanaicken street",
+            "longitude": "80.2906828"
+        },
+        {
+            "id": 18,
+            "occurences": 1,
+            "latitude": "13.0691658",
+            "name": "koyambedu",
+            "longitude": "80.1913883"
+        },
+        {
+            "id": 19,
+            "occurences": 0,
+            "latitude": "13.0927077",
+            "name": "wal tax",
+            "longitude": "80.2752649"
+        },
+        {
+            "id": 20,
+            "occurences": 1,
+            "latitude": "13.208684",
+            "name": "red hills",
+            "longitude": "80.1700686"
+        },
+        {
+            "id": 21,
+            "occurences": 1,
+            "latitude": "13.00806",
+            "name": "r a puram colony",
+            "longitude": "77.6926038"
+        }
+    ]

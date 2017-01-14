@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  start_point: MyString
+  end_point: MyString
+  bounds: MyString
+  occurences: 
+  unsafe_measure: 9.99
+
+two:
+  start_point: MyString
+  end_point: MyString
+  bounds: MyString
+  occurences: 
+  unsafe_measure: 9.99
