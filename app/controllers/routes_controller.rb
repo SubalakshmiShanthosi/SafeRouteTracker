@@ -14,7 +14,7 @@ class RoutesController < ApplicationController
     results = []
     area_id_map.each { |k, v|
       air_pollution_response = get_api_response(base_url + v + '/now.json')
-      results << {latitude: air_pollution_response['rxs']['obs'][0]['msg']['city']['geo'][0].to_f, longitude: air_pollution_response['rxs']['obs'][0]['msg']['city']['geo'][1].to_f, value: air_pollution_response['rxs']['obs'][0]['msg']['aqi'], status: air_pollution_response['rxs']['status']}
+      results << {latitude: air_pollution_response['rxs']['obs'][0]['msg']['city']['geo'][0].to_f, longitude: air_pollution_response['rxs']['obs'][0]['msg']['city']['geo'][1].to_f, value: air_pollution_response['rxs']['obs'][0]['msg']['aqi'], status: air_pollution_response['rxs']['status'], area: k}
     }
     render json: results, status: :ok
   end
