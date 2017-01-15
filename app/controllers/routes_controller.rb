@@ -22,8 +22,8 @@ class RoutesController < ApplicationController
   def safe_path
 
     api_key = 'AIzaSyAYU_fYcPQGp1FnLfH4W0F07hofMQkvZcQ'
-    origin = params[:from] ? params[:from] : 'thiruvanmiyur,IN'
-    destination = params[:to] ? params[:to] : 'tambaram,IN'
+    origin = params[:from] ? params[:from].gsub(" ", "%20;") + ',Chennai' : 'thiruvanmiyur,IN'
+    destination = params[:to] ? params[:to].gsub(' ', '%20;') + ',Chennai': 'tambaram,IN'
     url = "https://maps.googleapis.com/maps/api/directions/json?origin=#{origin}&destination=#{destination}&key=#{api_key}&alternatives=true"
     paths = []
 
