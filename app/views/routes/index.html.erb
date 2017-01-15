@@ -2,29 +2,56 @@
 <%= collection_select(:location, 0, Location.all, :name, :name) %>
 <label for="to">To</label>
 <%= collection_select(:location, 1, Location.all, :name, :name) %>
+<button id="showPollution"> Show pollution</button>
+<button id="showTrafficLevels">Show traffic levels</button>
 <div id="map" style="width:800px; height:800px"></div>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAoxCtn64wOaq5cGB5qcgGZnP_YhSKosJQ"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function(event) {
-        var map;
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 11,
+            center: {lat: 13.0011774, lng: 80.2564957}
+        });
+        var path;
         var directionsService = new google.maps.DirectionsService();
         var directionsDisplay = new google.maps.DirectionsRenderer({
             polylineOptions: {
                 strokeColor: "black"
             }
         });
-        function initialize() {
-            map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 11,
-                center: {lat: 13.0011774, lng: 80.2564957}
+
+
+        function updatePollutionLevels(){
+            $.get('/routes/air_quality', function (data) {
+                console.log(data);
+                data.forEach(function(pollutionInfo){
+                    var strokeColor = pollutionInfo.status === 'ok' ? "yellow" : "red";
+                    var marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(pollutionInfo.latitude.to_f, pollutionInfo.longitude.to_f),
+                        title: pollutionInfo.value.to_s,
+                        label: pollutionInfo.value.to_s,
+                        strokeColor: strokeColor
+                    });
+                    marker.setMap(map)
+//                    addMarker(pollutionInfo.latitude.to_f,pollutionInfo.longitude.to_f, pollutionInfo.value.to_s, strokeColor);
+                });
             });
-            directionsDisplay.setMap(map);
+        }
+
+        function updateTraficLayer(){
+            var trafficLayer = new google.maps.TrafficLayer();
+            trafficLayer.setMap(map);
+        }
+
+        function showSafetyAndTrafficMap() {
             var points = [];
             from = !!document.getElementById('location_0').value ? document.getElementById('location_0').value : 'thiruvanmiyur';
             to = !!document.getElementById('location_1').value ? document.getElementById('location_1').value : 'tambaram';
+            if(path)
+                path.setMap(null);
             $.get('/routes/safe_path?from=' + from.replace(' ', '%20') + '&to=' + to.replace(' ', '%20'), function (data) {
 
-                var path = new google.maps.Polyline({
+                path = new google.maps.Polyline({
                     path: data,
                     geodesic: true,
                     strokeColor: '#FF0000',
@@ -35,11 +62,21 @@
                 path.setMap(map);
             });
         }
+
+
+        function initMap() {
+            showSafetyAndTrafficMap();
+
+        }
         var fromOption = document.getElementById("location_0");
-        fromOption.addEventListener("change", initialize, false);
+        fromOption.addEventListener("change", showSafetyAndTrafficMap, false);
         var toOption = document.getElementById("location_1");
-        toOption.addEventListener("change", initialize, false);
-        google.maps.event.addDomListener(window, 'load', initialize);
+        toOption.addEventListener("change", showSafetyAndTrafficMap, false);
+        document.getElementById("showPollution").addEventListener("click", updatePollutionLevels, false);
+        document.getElementById("showTrafficLevels").addEventListener("click", updateTraficLayer, false);
+//        google.maps.event.addDomListener(window, 'load', initialize);
 
     });
 </script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoxCtn64wOaq5cGB5qcgGZnP_YhSKosJQ&callback=initMap"/>

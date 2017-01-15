@@ -8,6 +8,17 @@ class RoutesController < ApplicationController
     render json: Location.all.collect(&:name), status: :ok
   end
 
+  def air_quality_marker
+    area_id_map = {'alandur' => '3757', 'IIT' => '8184', 'Manali' => '8185'}
+    base_url = 'https://api.waqi.info/api/feed/@'
+    results = []
+    area_id_map.each { |k, v|
+      air_pollution_response = get_api_response(base_url + v + '/now.json')
+      results << {latitude: air_pollution_response['rxs']['obs'][0]['msg']['city']['geo'][0].to_f, longitude: air_pollution_response['rxs']['obs'][0]['msg']['city']['geo'][1].to_f, value: air_pollution_response['rxs']['obs'][0]['msg']['aqi'], status: air_pollution_response['rxs']['status']}
+    }
+    render json: results, status: :ok
+  end
+
   def safe_path
 
     api_key = 'AIzaSyAYU_fYcPQGp1FnLfH4W0F07hofMQkvZcQ'
@@ -17,7 +28,7 @@ class RoutesController < ApplicationController
     paths = []
 
     lat_long_list = []
-    routes_json = get_intermediate_locations(url)
+    routes_json = get_api_response(url)
     routes_json["routes"].each do |route|
       ne_bound = route["bounds"]["northeast"]
       sw_bound = route["bounds"]["southwest"]
@@ -68,7 +79,7 @@ class RoutesController < ApplicationController
     path
   end
 
-  def get_intermediate_locations(url)
+  def get_api_response(url)
     resource = RestClient::Resource.new(url)
     response = resource.get
     JSON.parse(response.body)

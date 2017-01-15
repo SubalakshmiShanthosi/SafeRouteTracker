@@ -1,5 +1,6 @@
 SafeRouteTracker::Application.routes.draw do
   get "routes/safe_path" => 'routes#safe_path'
+  get "routes/air_quality" => 'routes#air_quality_marker'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
