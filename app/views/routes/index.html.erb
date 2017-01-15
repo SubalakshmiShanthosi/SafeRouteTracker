@@ -25,12 +25,14 @@
             $.get('/routes/air_quality', function (data) {
                 console.log(data);
                 data.forEach(function(pollutionInfo){
-                    var strokeColor = pollutionInfo.status === 'ok' ? "yellow" : "red";
+                    var strokeColor = pollutionInfo.status === 'ok' ? "yellow" : "blue";
                     var marker = new google.maps.Marker({
                         position: new google.maps.LatLng(pollutionInfo.latitude.to_f, pollutionInfo.longitude.to_f),
-                        title: pollutionInfo.value.to_s,
+                        title: pollutionInfo.value.replace(' ','%20;').concat(',Chennai').to_s,
                         label: pollutionInfo.value.to_s,
-                        strokeColor: strokeColor
+                        strokeColor: strokeColor,
+                        strokeOpacity: 1.0,
+                        strokeWeight: 2
                     });
                     marker.setMap(map)
 //                    addMarker(pollutionInfo.latitude.to_f,pollutionInfo.longitude.to_f, pollutionInfo.value.to_s, strokeColor);
